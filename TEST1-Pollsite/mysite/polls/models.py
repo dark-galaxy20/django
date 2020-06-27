@@ -18,5 +18,14 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
     def __str__(self):
         return self.choice_text
+
+#students-|new|
+class Student(models.Model):
+    student_name = models.CharField(max_length=12)
+    student_last_name = models.CharField(max_length=12,default="No data")
+    student_idnum = models.CharField(max_length=15,default="No data")
+    pub_date = models.DateTimeField("date published")
+    def __str__(self):
+        return self.student_name
     
 # Create your models here.
