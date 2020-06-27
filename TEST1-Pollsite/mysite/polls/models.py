@@ -29,3 +29,4 @@ class Student(models.Model):
         return self.student_name
     
 # Create your models here.
+# version 1
