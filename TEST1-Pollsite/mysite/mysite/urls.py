@@ -20,3 +20,6 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
 ]
+admin.site.site_header = 'Allameh Tabatabaii school'
+admin.site.site_title = 'Welcome back!'
+admin.site.index_title = "Allameh"

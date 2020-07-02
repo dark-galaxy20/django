@@ -29,7 +29,7 @@ class Student(models.Model):
     student_class = models.ForeignKey(Clas,on_delete=models.SET_NULL,null=True)
     user = models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
     def __str__(self):
-        return self.student_name
+        return self.student_last_name
 class Exam(models.Model):
     exam_title = models.CharField(max_length=20,null=True)
     exam_branch = models.ForeignKey(Branch,on_delete=models.SET_NULL,null=True)
@@ -38,7 +38,11 @@ class Exam(models.Model):
         return self.exam_title
 class Score(models.Model):
     exam = models.ForeignKey(Exam,on_delete=models.CASCADE,null=True)
-    user = models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    student = models.ForeignKey(Student,on_delete=models.CASCADE,null=True)
+    user = models.ForeignKey(User,on_delete= models.CASCADE,null=True)
+    # def save(*args, **kwargs):
+    #     self.user = self.student.user
+    #     super().save(*args, **kwargs)
     score = models.FloatField(null=True)
     def __str__(self):
         return str(self.score)

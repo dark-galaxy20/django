@@ -2,6 +2,11 @@ from django.contrib import admin
 from .models import *
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.admin import UserAdmin
+from django import forms
+from django.utils.translation import ugettext_lazy as _
+
 def is_teacher(user):
     return user.groups.filter(name='teacher').exists()
 
@@ -14,8 +19,8 @@ class ExamAdmin(admin.ModelAdmin):
     list_filter = ('exam_branch', )
 class ScoreAdmin(admin.ModelAdmin):
     if User.is_superuser or is_teacher(request.user) :
-        list_filter = ('user', 'exam',)
-    list_display = ('exam','user','score',)
+        list_filter = ('student', 'exam',)
+    list_display = ('exam','student','score',)
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         if request.user.is_superuser or is_teacher(request.user) :
@@ -36,6 +41,8 @@ class UserAdmin(BaseUserAdmin):
     inlines = (StudentInline,TeacherInline)
 
 
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
 
 admin.site.register(Clas)
 admin.site.register(Branch)
