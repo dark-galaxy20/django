@@ -44,7 +44,7 @@ class UserAdmin(BaseUserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
-admin.site.register(Clas)
+admin.site.register(Classroom)
 admin.site.register(Branch)
 admin.site.register(Teacher)
 admin.site.register(Student,StudentAdmin)
