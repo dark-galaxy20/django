@@ -9,14 +9,14 @@ class Classroom(models.Model):
     class_number = models.CharField(max_length=4,null=True)
     def __str__(self):
         return self.class_number
-class Branch(models.Model):
-    branch_name = models.CharField(max_length=12,null=True)
+class Subject(models.Model):
+    subject_name = models.CharField(max_length=12,null=True)
     def __str__(self):
-        return self.branch_name
+        return self.subject_name
 class Teacher(models.Model):
-    teacher_full_name = models.CharField(max_length=12,null=True)
+    teacher_full_name = models.CharField(max_length=20,null=True)
     teacher_age = models.PositiveSmallIntegerField(null=True)
-    teacher_branch = models.ForeignKey(Branch,on_delete=models.SET_NULL,null=True)
+    teacher_subject = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True)
     teacher_class = models.ForeignKey(Classroom,on_delete=models.SET_NULL,null=True)
     user = models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
     def __str__(self):
@@ -32,7 +32,7 @@ class Student(models.Model):
         return self.student_last_name
 class Exam(models.Model):
     exam_title = models.CharField(max_length=20,null=True)
-    exam_branch = models.ForeignKey(Branch,on_delete=models.SET_NULL,null=True)
+    exam_subject = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True)
     exam_date = models.DateTimeField('exam date')
     def __str__(self):
         return self.exam_title

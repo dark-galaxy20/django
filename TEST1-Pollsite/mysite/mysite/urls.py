@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('polls/', include('polls.urls')),
-    path('admin/', admin.site.urls),
+   # path('polls/', include('polls.urls')),
+    path('', admin.site.urls),
 ]
-admin.site.site_header = 'Allameh Tabatabaii school'
+admin.site.site_header = 'Allameh Tabatabaii School'
 admin.site.site_title = 'Welcome back!'
-admin.site.index_title = "Allameh"
+admin.site.index_title = "Allameh School management"
