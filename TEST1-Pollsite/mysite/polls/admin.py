@@ -28,7 +28,7 @@ class ScoreAdmin(admin.ModelAdmin):
     if User.is_superuser or is_teacher(request.user) or is_headmaster(request.user) :
         list_filter = ('exam', 'student',)
         list_display = ('exam','student','score',)
-        search_fields = ['student',"score","exam"]
+        search_fields = ['student',"score","exam",]
     else:
         list_filter = ('exam',)
         list_display = ('exam','score',)     

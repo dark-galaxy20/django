@@ -42,7 +42,7 @@ class Score(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE,null = True,blank=True,editable=False) 
     def save(self,*args, **kwargs):
         if self.pk is None:
-            self.user = User.objects.get(first_name=str(self.student.student_name),last_name=str(self.student.student_last_name))
+            self.user = User.objects.get(first_name=str(student.student_name),last_name=str(student.student_last_name))
         super().save(*args, **kwargs)
     score = models.FloatField(null=True)
     def __str__(self):
